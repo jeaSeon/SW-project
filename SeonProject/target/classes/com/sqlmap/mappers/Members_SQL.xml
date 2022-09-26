@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sqlmap.mappers.Members_SQL">
+	<resultMap type="members" id="membersResult">
+		<result property="memberId" column="memberId" />
+		<result property="memberPassword" column="memberPassword" />
+		<result property="memberName" column="memberName" />
+		<result property="memberNickname" column="memberNickname" />
+		<result property="memberSignDate" column="memberSignDate" />
+		<result property="memberGrade" column="memberGrade" />
+		<result property="memberEtc" column="memberEtc" />
+	</resultMap>
+
+
+	<select id="memberId_check" resultType="int">
+		SELECT COUNT(*) FROM members WHERE memberID=#{memberId}
+	</select>
+	
+	<select id="memberNickname_check" resultType="int">
+		SELECT COUNT(*) FROM members WHERE memberNickname=#{memberNickname}
+	</select>
+	
+	<insert id="signUpMember">
+		insert into members(memberId, memberPassword, memberName, memberNickname)
+		values(#{memberId},#{memberPassword},#{memberName},#{memberNickname})
+	</insert>
+	
+	<select id="loginMember" resultType="int">
+		select count(*) from members where memberId=#{memberId} and memberPassword=#{memberPassword}
+	</select>
+	
+	<select id="selectMember" resultMap="membersResult">
+		SELECT * FROM members WHERE memberId=#{memberId}
+	</select>
+</mapper>
