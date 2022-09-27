@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="utf-8">
+    
     <title>Gardener - Gardening Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -33,43 +34,22 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-   
-<style>
+    
+<style type="text/css">
 
+#title{
+    width:820px;
+}
 
 </style>
 
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function loginMember() {
-		var id = $('#memberId').val();
-		var pw = $('#memberPassword').val();
-		if(id == "") {
-			alert("아이디를 입력해주세요.")
-		} else if(pw == ""){
-			alert("비밀번호를 입력해주세요.")
-		} else {
-			$.ajax({
-				url: 'loginMember.do',
-				type: 'POST',
-				data: {
-					memberId:id,
-					memberPassword:pw
-					},
-				datatype: 'JSON',
-				success: function (data) {
-					if(data == 1){
-						alert(id + "님 로그인성공!");
-						location="main.do";
-					} else {
-						alert("아이디나 비밀번호를 확인해 주세요.");
-					}
-				}
-			})
-		}		
-	}
+
     
-</script> 
+</script>
 
 </head>
 
@@ -92,49 +72,63 @@
         </div>
     </div>
     <!-- Page Header End -->
-
     
-        <!-- Quote Start 
-        data-image-src="img/carousel-2.jpg"-->
-    <!--    <div class="container-fluid quote my-5 py-5" data-parallax="scroll" >-->
-      <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="bg-white rounded p-4 p-sm-5 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 class="display-5 text-center mb-5">로그인</h1>
-                        <div class="row g-3">
-                            <div class="col-12 text-center">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" id="memberId" name="memberId" >
-                                    <label for="memberId">아이디</label>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-light border-0" id="memberPassword" name="memberPassword">
-                                    <label for="memberPassword">비밀번호</label>
-                                </div>
-                            </div>
-                           <!-- 
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Message</label>
-                                </div>
-                            </div> -->
-                            <br/><br/>
-                            <div class="col-12 text-center">
-                                <input class="btn btn-primary py-3 px-4" type="button"  onclick="loginMember()" value="로그인"/>
-                                <input class="btn btn-primary py-3 px-4" type="button"  onclick="location.href='signUp.do'" value="회원가입"/>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- 바디라인 -->
+    <!-- Service Start -->
+    
+
+    <div class="container-xxl py-5">
+        <div class="container">
+                <p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
+                <h1 class="display-5 mb-5">챌린저스 등록</h1>
+
+	        
+	        <input id="boardNo" value="${reviewBoard.boardNo}" type="hidden" />
+	        <input id="wdate" name="wdate" value="${reviewBoard.wdate}" type="hidden" />
+	        
+	        
+	        <form action="upload_ok.do" class="myform" method="post" enctype="multipart/form-data" id="insert">
+	        <table class="table">
+	            <tr>
+	                <th style="padding:13px 0 0 15px;">제목</th>
+	                <td><input name="title" type="text" value="${reviewBoard.title}"/></td>
+	            </tr>
+	            <tr>
+	                <th style="padding:13px 0 0 15px">분류</th>
+	                <td>
+	                    <div >
+	                        <select  id="plantType" type="hidden">
+	                            <option value="채소">채소</option>
+	                            <option value="다육이">다육이</option>
+	                        </select>
+	                    </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th style="padding:13px 0 0 15px;">내용</th>
+	                <td><textarea name="content" maxlength="140" rows="10" cols="100" style="height: 300px;">${reviewBoard.content}</textarea>
+	                </td>
+	            </tr>
+	            
+	            <!-- 파일업로드 -->
+	            <tr>
+	                <th style="padding:13px 0 0 15px;">파일첨부</th>
+	                <td><input type="file" id="file" name="file"></td>
+	            </tr>         
+	        </table>
+	        </form>
+	        
+	        
+	        <div align="right">
+            	<input type="submit" form="insert" class="btn btn-primary py-3 px-4" value="등록"/>
             </div>
- 	</div>
-              <!-- </div>
- 		Quote End -->
+        </div>
+    </div>
+    <!-- Service End -->
+    
+    
+   
+    
     
 
     <!-- Copyright Start -->

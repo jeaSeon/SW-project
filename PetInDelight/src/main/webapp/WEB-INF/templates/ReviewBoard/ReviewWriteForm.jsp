@@ -171,6 +171,7 @@ min-height: 100%;
             <input type="submit" form="insert" class="btn"  value="등록"/>
          </div>
         </c:if>
+        
         </div>
 		</div>
         
