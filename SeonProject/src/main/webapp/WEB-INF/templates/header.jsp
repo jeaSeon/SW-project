@@ -67,6 +67,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="boardlist.do" class="nav-item nav-link">참여하기</a>
+                  <a href="#" class="nav-item nav-link">식물검색</a>
                   <!--  <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
                 <a href="project.html" class="nav-item nav-link active">Projects</a>

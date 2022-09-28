@@ -21,4 +21,12 @@
 		#{memberNickname},#{boardPicturePath},#{plantType},date_add(NOW(),INTERVAL #{endDate} DAY))
 	</insert>
 	
+	
+	<select id="selectBoardList" resultMap="boardsResult">
+		SELECT * FROM board 
+		WHERE boardType="Challenge"
+		ORDER BY boardNO DESC
+	</select>
+	
+	
 </mapper>

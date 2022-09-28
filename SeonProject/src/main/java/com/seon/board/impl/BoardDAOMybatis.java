@@ -1,5 +1,7 @@
 package com.seon.board.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.seon.board.service.BoardDAO;
@@ -15,6 +17,12 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO{
 	public void insertBoard(BoardVO boardVO) throws Exception {
 		insert("insertBoard",boardVO);
 		
+	}
+
+	//전체글 조회
+	@Override
+	public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception {
+		return selectList("selectBoardList", boardVO);
 	}
 	
 	

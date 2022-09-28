@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,17 +26,24 @@ public class BoardController {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
+	
 	//글 조회
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
-	public String board(HttpSession session, HttpServletRequest request, Model model) {
+	public String board(BoardVO boardVO, HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		String memberId=null;
 		session=request.getSession();
 		memberId=(String) session.getAttribute("SessionMemberId");
+		//System.out.println("전체글 " + boardService.selectBoardList(boardVO));
+		
 		
 		model.addAttribute("memberId",memberId);
+		model.addAttribute("boardList",boardService.selectBoardList(boardVO));
 		return "/board/boardlist";
 	}
 	
+	
+	
+	//글쓰기로 이동
 	@RequestMapping(value="/boardWrite.do", method=RequestMethod.GET)
 	public String boardWrite(HttpSession session, HttpServletRequest request, Model model) {
 		String memberId=null;
@@ -48,7 +56,7 @@ public class BoardController {
 	}
 	
 	//게시글 작성
-	@RequestMapping(value="upload_ok.do", method=RequestMethod.POST)
+	@PostMapping(value="upload_ok.do")
 	public String upload(@RequestParam("file") MultipartFile file, MembersVO membersVO, BoardVO boardVO,
 						HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		
@@ -109,7 +117,7 @@ public class BoardController {
 		
 		//세션
 		model.addAttribute("memberId",memberId);
-		return "board/boardlist";
+		return "redirect:/boardlist.do";
 	}
 	
 	
