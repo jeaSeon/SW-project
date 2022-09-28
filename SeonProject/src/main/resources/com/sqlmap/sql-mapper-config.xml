@@ -4,5 +4,6 @@
 <configuration>  
     <typeAliases>
 		 <typeAlias type="com.seon.members.service.MembersVO" alias="members" /> 
+		 <typeAlias type="com.seon.board.service.BoardVO" alias="board" /> 
     </typeAliases>
 </configuration> 

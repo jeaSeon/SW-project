@@ -25,7 +25,7 @@ public class MembersController {
 	
 	@RequestMapping(value="/test.do")
 	public String test() {
-		return "index";
+		return "test";
 	}
 	
 	//회원가입 페이지로 이동

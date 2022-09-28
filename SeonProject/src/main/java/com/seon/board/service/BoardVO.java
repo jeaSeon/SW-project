@@ -2,6 +2,7 @@ package com.seon.board.service;
 
 import java.util.Date;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,7 @@ public class BoardVO {
 	
 	private String boardPicturePath;
 	private String plantType;
+	private String endDate;
 	
 	//페이징
 	private int viewPage = 1;
