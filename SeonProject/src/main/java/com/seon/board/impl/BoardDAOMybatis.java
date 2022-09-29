@@ -37,6 +37,14 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO{
 		delete("deleteBoard", boardVO);
 		
 	}
+
+	@Override
+	public void updateBoard(BoardVO boardVO) throws Exception {
+		update("updateBoard",boardVO);
+		
+	}
+
+
 	
 	
 

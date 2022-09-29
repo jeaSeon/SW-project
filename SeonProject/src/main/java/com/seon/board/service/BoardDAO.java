@@ -11,4 +11,6 @@ public interface BoardDAO {
 	BoardVO selectBoard(BoardVO boardVO) throws Exception;
 
 	void deleteBoard(BoardVO boardVO) throws Exception;
+	
+	void updateBoard(BoardVO boardVO) throws Exception;
 }

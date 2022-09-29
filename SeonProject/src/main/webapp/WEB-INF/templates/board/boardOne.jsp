@@ -167,14 +167,18 @@
 					
 
 				</div>
+				<c:if test="${memberId!=null }">
 					<div align="right">
 						<a class="btn btn-primary py-3 px-4" href="">신청하기</a>
 					</div><br/>
+				</c:if>
 					
+					<c:if test="${board.memberId==memberId}">
 					<div align="right">
 						<input type="button" class="btn btn-primary py-3 px-4" onclick="deleteBoard()" value="삭제하기">
 						<input type="button" class="btn btn-primary py-3 px-4" onclick="updateBoard()" value="수정하기">
 					</div>
+					</c:if>
 
 				</div>
 

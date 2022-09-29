@@ -15,4 +15,7 @@ public interface BoardService {
 
 	//글 삭제
 	void deleteBoard(BoardVO boardVO) throws Exception;
+	
+	//글 수정
+	void updateBoard(BoardVO boardVO) throws Exception;
 }

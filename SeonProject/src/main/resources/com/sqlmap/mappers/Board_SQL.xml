@@ -40,6 +40,11 @@
 		DELETE FROM board WHERE boardNo=#{boardNo}
 	</delete>
 	
+	<update id="updateBoard">
+		UPDATE board SET title=#{title}, endDate=date_add(#{wdate},INTERVAL #{endDate} DAY), 
+		plantType=#{plantType},  content=#{content}, boardPicturePath=#{boardPicturePath}
+		WHERE boardNo=#{boardNo}
+	</update>
 	
 	
 </mapper>

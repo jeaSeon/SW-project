@@ -84,11 +84,16 @@
                 <h1 class="display-5 mb-5">챌린저스 등록</h1>
 
 	        
-	        <input id="boardNo"  value="${board.boardNo}" type="hidden" />
+
 	        <input id="wdate" value="${board.wdate}" name="wdate"  type="hidden" />
 	        
 	        
-	        <form action="upload_ok.do" class="myform" method="post" enctype="multipart/form-data" id="insert">
+	        <form class="myform" enctype="multipart/form-data" id="insert">
+	         <c:if test="${board != null}">
+        		<input name="boardNo" value="${board.boardNo}" type="hidden" />
+        		
+        	</c:if>
+	        
 	        <table class="table">
 	            <tr>
 	                <th style="padding:13px 0 0 15px;">제목</th>
@@ -127,10 +132,17 @@
 	        </table>
 	        </form>
 	        
-	        
-	        <div align="right">
-            	<input type="submit" form="insert" class="btn btn-primary py-3 px-4" value="등록"/>
-            </div>
+	        <c:if test="${board.boardNo ==null}">
+		        <div align="right">
+	            	<input type="submit" form="insert" class="btn btn-primary py-3 px-4" value="등록" formaction="upload_ok.do" formmethod="post"/>
+	            </div>
+            </c:if>
+            
+            <c:if test="${board.memberId ==sessionMember.memberId}">
+		        <div align="right">
+	            	<input type="submit" form="insert" class="btn btn-primary py-3 px-4" value="수정" formaction="boardUpdate.do" formmethod="post"/>
+	            </div>
+            </c:if>
         </div>
     </div>
     <!-- Service End -->
