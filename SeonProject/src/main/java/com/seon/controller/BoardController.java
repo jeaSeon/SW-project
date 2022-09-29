@@ -27,7 +27,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	
-	//글 조회
+	//글 전체 조회
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
 	public String board(BoardVO boardVO, HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		String memberId=null;
@@ -41,7 +41,55 @@ public class BoardController {
 		return "/board/boardlist";
 	}
 	
+	//해당 글 조회
+	@RequestMapping(value="/boardOne.do")
+	public String boardOne(BoardVO boardVO, HttpSession session, HttpServletRequest request, Model model ) throws Exception {
+		System.out.println("글번호 : " + boardVO);
+		
+		String memberId=null;
+		session=request.getSession();
+		memberId=(String) session.getAttribute("SessionMemberId");
+		
+		//BoardVO board=boardService.selectBoard(boardVO);
+		//board.setContent(board.getContent().replace("<br>", "\r\n"));
+		//System.out.println("조회조회"+boardService.selectBoard(boardVO));
+		
+		model.addAttribute("memberId",memberId);
+		model.addAttribute("board",boardService.selectBoard(boardVO));
+		return "/board/boardOne";
+	}
 	
+	//글 삭제	
+	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
+	public String deleteBoard(BoardVO boardVO) throws Exception {
+		System.out.println("게시글 넘버" + boardVO);
+		boardService.deleteBoard(boardVO);
+		
+		return "/board/boardOne";
+	}
+	
+	
+	//글 수정
+	@RequestMapping(value="/boardUp.do")
+	public String boardUp(BoardVO boardVO, Model model, HttpSession session, HttpServletRequest request) throws Exception {
+		//System.out.println(boardVO);
+		
+		BoardVO board=boardService.selectBoard(boardVO);
+		board.setContent(board.getContent().replace("<br>", "\r\n"));
+		//System.out.println("나와랏 " + board);
+		
+		MembersVO sessionMember=null;
+		session=request.getSession();
+		sessionMember = (MembersVO) session.getAttribute("SessionMember");
+		
+		
+		model.addAttribute("sessionMember",sessionMember);
+		model.addAttribute("board",board);
+		
+		
+		return "/board/boardWrite";
+		
+	}
 	
 	//글쓰기로 이동
 	@RequestMapping(value="/boardWrite.do", method=RequestMethod.GET)
@@ -70,6 +118,7 @@ public class BoardController {
 		String memberNickname = (String) session.getAttribute("SessionMemberNickname");
 		System.out.println("-------->"+ memberId + ":" + memberNickname);
 		
+		
 		String fileRealName=file.getOriginalFilename();	//파일명 얻는 메소드
 		long size=file.getSize(); // 파일 사이즈
 		
@@ -84,8 +133,10 @@ public class BoardController {
 			fileExtension=fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
 		}
 		
+	
 		//파일 저장되는 경로
-		String uploadFolder="C:\\picture";
+		//String uploadFolder="C:\\picture";
+		String uploadFolder="C:\\Users\\13\\git\\SW-project\\SeonProject\\src\\main\\webapp\\img\\upload";
 		
 		//랜덤이름 : 파일 이름 중복을 막기 위해.
 		UUID uuid=UUID.randomUUID();
@@ -97,11 +148,11 @@ public class BoardController {
 		System.out.println("--------> 확장자명 : " + fileExtension);
 		//uniqueName : 랜덤파일생성명 / fileExtension : 확장자명
 		
-		boardVO.setMemberId(memberId);
-		boardVO.setMemberNickname(memberNickname);
-		boardVO.setBoardType("Challenge");
+		//boardVO.setMemberId(memberId);
+		//boardVO.setMemberNickname(memberNickname);
+		//boardVO.setBoardType("Challenge");
 		boardVO.setBoardPicturePath(uniqueName+fileExtension);
-		boardService.insertBoard(boardVO);
+		//boardService.insertBoard(boardVO);
 		
 		
 		File saveFile = new File(uploadFolder+"\\"+uniqueName+fileExtension);
@@ -113,7 +164,18 @@ public class BoardController {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+
 		
+		
+		boardVO.setMemberId(memberId);
+		boardVO.setMemberNickname(memberNickname);
+		
+		//System.out.println("게시글"+boardVO.getContent().replace("\r\n","<br>"));
+		boardVO.setContent(boardVO.getContent().replace("\r\n","<br>"));
+		
+		boardVO.setBoardType("Challenge");
+		//boardVO.setBoardPicturePath(uniqueName+fileExtension);
+		boardService.insertBoard(boardVO);
 		
 		//세션
 		model.addAttribute("memberId",memberId);

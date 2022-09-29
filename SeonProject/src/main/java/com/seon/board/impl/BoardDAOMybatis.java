@@ -24,6 +24,19 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO{
 	public List<BoardVO> selectBoardList(BoardVO boardVO) throws Exception {
 		return selectList("selectBoardList", boardVO);
 	}
+
+	//글 1개 조회
+	@Override
+	public BoardVO selectBoard(BoardVO boardVO) throws Exception {
+		return (BoardVO) selectOne("selectBoard",boardVO);
+	}
+
+	//글 삭제
+	@Override
+	public void deleteBoard(BoardVO boardVO) throws Exception {
+		delete("deleteBoard", boardVO);
+		
+	}
 	
 	
 
