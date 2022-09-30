@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
 <configuration>  
     <typeAliases>
 		 <typeAlias type="com.seon.members.service.MembersVO" alias="members" /> 
 		 <typeAlias type="com.seon.board.service.BoardVO" alias="board" /> 
+		 <typeAlias type="com.seon.challenge.service.ChallengeVO" alias="challenge" /> 
     </typeAliases>
 </configuration> 

@@ -10,6 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -94,6 +95,7 @@
         		
         	</c:if>
 	        
+	        <!-- 테이블 -->
 	        <table class="table">
 	            <tr>
 	                <th style="padding:13px 0 0 15px;">제목</th>
@@ -146,10 +148,7 @@
         </div>
     </div>
     <!-- Service End -->
-    
-    
-   
-    
+
     
 
     <!-- Copyright Start -->
