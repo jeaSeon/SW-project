@@ -53,13 +53,12 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function insertChallenge(){
+	function insertChallenge() {
 		alert("신청하기")
-		var boardNo=$('#boardNo').val()
-		location.href='insertChallenge.do?boardNo='+boardNo
-		
+		var boardNo = $('#boardNo').val()
+		location.href = 'insertChallenge.do?boardNo=' + boardNo
+
 	}
-	
 </script>
 </head>
 
@@ -86,81 +85,188 @@
 	</div>
 	<!-- Page Header End -->
 
-    <div class="container-xxl py-5">
-     <div class="container">
-     <input id="boardNo" name="boardNo" value="${board.boardNo}" type="hidden" />
-     <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
-                <h1 class="display-5 mb-5">챌린저스</h1>
-     </div>
-     
-     
-	        <div class="row g-5 align-items-end">
-	          <div class="col-lg-12 col-md-7 wow fadeInUp" >
-				<p class="text-primary mb-4">${board.boardNo}번글</p>
-				
-			    <table class="table table-hover">
-				  <tbody>
-	
-					<tr>
-				     <th scope="row">참가자 아이디</th>
-				     <td>${sessionMember.memberId}</td>				     
-				    </tr>
-				    
-				    <tr>
-				     <th scope="row">참가자 닉네임</th>
-				     <td>${sessionMember.memberNickname}</td>				     
-				    </tr>
-	
-	
-					<tr>
-				      <th scope="row"></th>
-				      <td></td>
-				    </tr>
-				    
-				    
-				    <tr>
-				     <th scope="row">제목</th>
-				     <td>${board.title}</td>
-				     
-				    </tr>
-				    <tr>
-				      <th scope="row">분류</th>
-				      <td>${board.plantType}</td>
-				    </tr>
+	<div class="container-xxl py-5">
+		<div class="container">
+			<div class="row g-5 align-items-end">
+				<div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s"
+					style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+				</div>
 
-				    <tr>
-				      <th scope="row">기간</th>
-				      <td><c:set var="num" value="${board.endDate }" />
-							<c:set var="endDate" value="${fn:substring(num, 0, 10)}" />
-							<p class="card-subtitle text-muted">
-								<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" /> ~ ${endDate}  // 옆에 진행중 이런 뱃지 넣을 예정</p></td>
-				    </tr>
-				    
-				    <tr>
-				      <th scope="row"></th>
-				      <td></td>
-				    </tr>
-				    
-				    
+				<div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s"
+					style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
 
-				    
-				  </tbody>
-				</table>
-				
-			
-				<c:if test="${sessionMember!=null }">
-					<div align="right">
-						<input type="button" class="btn btn-primary py-3 px-4" onclick="insertChallenge()" value="신청하기">
-					</div><br/>
-				</c:if>
-					
-				
+					<input id="boardNo" name="boardNo" value="${board.boardNo}"
+						type="hidden" />
+					<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
+						style="max-width: 500px;">
+						<p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
+						<h1 class="display-5 mb-5">챌린저스</h1>
+					</div>
+
+					<div class="row g-5 align-items-end">
+						<div class="col-lg-12 col-md-7 wow fadeInUp">
+							<p class="text-primary mb-4">${board.boardNo}번글</p>
+
+							<table class="table table-hover">
+								<tbody>
+
+									<tr>
+										<th scope="row">아이디</th>
+										<td>${sessionMember.memberId}</td>
+									</tr>
+
+									<tr>
+										<th scope="row">닉네임</th>
+										<td>${sessionMember.memberNickname}</td>
+									</tr>
+
+
+									<tr>
+										<th scope="row"></th>
+										<td></td>
+									</tr>
+
+
+									<tr>
+										<th scope="row">제목</th>
+										<td>${board.title}</td>
+
+									</tr>
+									<tr>
+										<th scope="row">분류</th>
+										<td>${board.plantType}</td>
+									</tr>
+
+									<tr>
+										<th scope="row">기간</th>
+										<td><c:set var="num" value="${board.endDate }" /> <c:set
+												var="endDate" value="${fn:substring(num, 0, 10)}" />
+											<p class="card-subtitle text-muted">
+												<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
+												~ ${endDate} // 옆에 진행중 이런 뱃지 넣을 예정
+											</p></td>
+									</tr>
+
+									<tr>
+										<th scope="row"></th>
+										<td></td>
+									</tr>
+
+								</tbody>
+							</table>
+							
+							<p class="text-primary mb-4">! 위의 정보가 맞으시다면 하단의 신청하기 버튼을 클릭하여 주십시오.</p>
+
+
+							<c:if test="${sessionMember!=null }">
+								<div align="right">
+									<input type="button" class="btn btn-primary py-3 px-4"
+										onclick="insertChallenge()" value="신청하기">
+								</div>
+								<br />
+							</c:if>
+
+						</div>
+					</div>
+
+
+					<!-- 
+                    <h1 class="display-1 text-primary mb-0">25</h1>
+                    <p class="text-primary mb-4">Year of Experience</p>
+                    <h1 class="display-5 mb-4">We Make Your Home Like A Garden</h1>
+                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <a class="btn btn-primary py-3 px-4" href="">Explore More</a> -->
+
+				</div>
+
 			</div>
-   		 </div>
-    	</div>
-    </div>
-	
+		</div>
+	</div>
+
+
+
+		<!-- 
+	<div class="container-xxl py-5">
+		<div class="container">
+			<input id="boardNo" name="boardNo" value="${board.boardNo}"
+				type="hidden" />
+			<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
+				style="max-width: 500px;">
+				<p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
+				<h1 class="display-5 mb-5">챌린저스</h1>
+			</div>
+
+
+			<div class="row g-5 align-items-end">
+				<div class="col-lg-12 col-md-7 wow fadeInUp">
+					<p class="text-primary mb-4">${board.boardNo}번글</p>
+
+					<table class="table table-hover">
+						<tbody>
+
+							<tr>
+								<th scope="row">참가자 아이디</th>
+								<td>${sessionMember.memberId}</td>
+							</tr>
+
+							<tr>
+								<th scope="row">참가자 닉네임</th>
+								<td>${sessionMember.memberNickname}</td>
+							</tr>
+
+
+							<tr>
+								<th scope="row"></th>
+								<td></td>
+							</tr>
+
+
+							<tr>
+								<th scope="row">제목</th>
+								<td>${board.title}</td>
+
+							</tr>
+							<tr>
+								<th scope="row">분류</th>
+								<td>${board.plantType}</td>
+							</tr>
+
+							<tr>
+								<th scope="row">기간</th>
+								<td><c:set var="num" value="${board.endDate }" /> <c:set
+										var="endDate" value="${fn:substring(num, 0, 10)}" />
+									<p class="card-subtitle text-muted">
+										<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
+										~ ${endDate} // 옆에 진행중 이런 뱃지 넣을 예정
+									</p></td>
+							</tr>
+
+							<tr>
+								<th scope="row"></th>
+								<td></td>
+							</tr>
+
+
+
+
+						</tbody>
+					</table>
+
+
+					<c:if test="${sessionMember!=null }">
+						<div align="right">
+							<input type="button" class="btn btn-primary py-3 px-4"
+								onclick="insertChallenge()" value="신청하기">
+						</div>
+						<br />
+					</c:if>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+		 -->
 
 
 	<!-- Copyright Start -->

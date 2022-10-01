@@ -82,9 +82,21 @@
 	<!-- Page Header End -->
 
 
-
-	성공성공~~~!!!!
-	축하합니다~~!! 화이텡~~~!!
+	<!-- 성공~~!! -->
+	<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+	        <div class="container text-center">
+	            <div class="row justify-content-center">
+	                <div class="col-lg-6">
+	                    <!-- <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+	                     <h1 class="display-1">중복</h1> -->
+	                    <h1 class="mb-4">신청완료</h1>
+	                    <p class="mb-4">신청이 완료되었습니다 ^^<br/>
+	                    				참가자분들의 도전을 응원합니다 ^^</p>
+	                    <a class="btn btn-primary py-3 px-4" href="boardlist.do">목록으로</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 
 
 	<!-- Copyright Start -->

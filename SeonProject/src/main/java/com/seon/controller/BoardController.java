@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.seon.board.service.BoardService;
 import com.seon.board.service.BoardVO;
+import com.seon.challenge.service.ChallengeVO;
 import com.seon.members.service.MembersVO;
 
 @Controller
@@ -34,6 +35,9 @@ public class BoardController {
 		session=request.getSession();
 		memberId=(String) session.getAttribute("SessionMemberId");
 		//System.out.println("전체글 " + boardService.selectBoardList(boardVO));
+		
+		ChallengeVO challenge=null;
+		
 		
 		
 		model.addAttribute("memberId",memberId);
