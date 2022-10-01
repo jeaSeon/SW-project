@@ -21,6 +21,7 @@
 		<result property="boardPicturePath" column="boardPicturePath" />
 		<result property="plantType" column="plantType" />
 		<result property="endDate" column="endDate" />
+		<result property="pCount" column="pCount" />
 	</resultMap>
 	
 	<insert id="insertChallenge">
@@ -34,5 +35,13 @@
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM challenge WHERE boardNo=#{boardNo} AND memberId=#{memberId}
 	</select>
+	
+	<select id="numBoard" resultType="int">
+		SELECT COUNT(*) FROM challenge WHERE boardNo=#{boardNo}
+	</select>
+	
+	<update id="PcountBoardUpdate">
+		UPDATE board SET pCount=#{pCount} WHERE boardNO=#{boardNo}
+	</update>
 
 </mapper>

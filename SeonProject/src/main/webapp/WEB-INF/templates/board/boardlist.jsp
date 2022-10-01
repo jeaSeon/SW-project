@@ -91,13 +91,17 @@
                             </div>
                             <h4 class="mb-3">${board.plantType}</h4>
                             <p class="mb-4">${board.title}</p>
-                            <p>작성자 : ${board.memberNickname}</p>
+                            <p>작성자 : ${board.memberNickname}
+                             	
+                            </p>
+                            <p>총 참가자수 : ${board.PCount}명 </p>
                             	
                             	<!-- 끝나는 날짜 substring으로 문자열나누기 -->
-                            	<c:set var = "num" value = "${board.endDate }"/>
+                            	<c:set var = "num" value = "${board.endDate}"/>
                             	<c:set var = "endDate" value = "${fn:substring(num, 0, 10)}" />
                             <p class="mb-4"><fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd"/> ~ ${endDate}</p>
                             <a class="btn btn-sm" href="boardOne.do?boardNo=${board.boardNo}"><i class="fa fa-plus text-primary me-2"></i>신청하기</a>
+                           
                         </div>
                     </div>
                 </div>

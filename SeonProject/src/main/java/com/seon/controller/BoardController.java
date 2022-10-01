@@ -36,12 +36,15 @@ public class BoardController {
 		memberId=(String) session.getAttribute("SessionMemberId");
 		//System.out.println("전체글 " + boardService.selectBoardList(boardVO));
 		
-		ChallengeVO challenge=null;
-		
-		
-		
 		model.addAttribute("memberId",memberId);
 		model.addAttribute("boardList",boardService.selectBoardList(boardVO));
+		for (BoardVO test :boardService.selectBoardList(boardVO) ) {
+			System.out.println("나와봐라"+test.getPCount());
+			
+		}
+		
+		
+		System.out.println(boardService.selectBoardList(boardVO));
 		return "/board/boardlist";
 	}
 	

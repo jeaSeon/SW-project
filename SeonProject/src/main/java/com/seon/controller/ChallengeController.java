@@ -70,6 +70,15 @@ public class ChallengeController {
 		challengeService.insertChallenge(challengeVO);
 		System.out.println("인설트했다잉?"+challengeVO);
 		
+		int a=challengeService.numBoard(challengeVO);
+		System.out.println("몇명 신청했어?"+a);
+		
+		boardVO.setPCount(a);
+		System.out.println("보드정보 갖고와"+boardVO.toString());
+		challengeService.PcountBoardUpdate(boardVO);
+		
+		
+		
 		model.addAttribute("challengeVO",challengeVO);
 		return "/challenge/challengeSuccess";
 		

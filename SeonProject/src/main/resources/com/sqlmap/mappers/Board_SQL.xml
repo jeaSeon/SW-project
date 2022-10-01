@@ -12,6 +12,7 @@
 		<result property="boardPicturePath" column="boardPicturePath" />
 		<result property="plantType" column="plantType" />
 		<result property="endDate" column="endDate" />
+		<result property="pCount" column="pCount" />
 	</resultMap>
 	
 	<!-- 글 등록 -->

@@ -10,4 +10,8 @@ public interface ChallengeService {
 	BoardVO selectBoard(BoardVO boardVO) throws Exception;
 	
 	int countBoard(ChallengeVO challengeVO) throws Exception;
+	
+	int numBoard(ChallengeVO challengeVO) throws Exception;
+	
+	void PcountBoardUpdate(BoardVO boardVO) throws Exception;
 }

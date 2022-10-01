@@ -31,6 +31,18 @@ public class ChallengeServiceImpl implements ChallengeService{
 		int result=challengeDAO.countBoard(challengeVO);
 		return result;
 	}
+
+	@Override
+	public int numBoard(ChallengeVO challengeVO) throws Exception {
+		int result=challengeDAO.numBoard(challengeVO);
+		return result;
+	}
+
+	@Override
+	public void PcountBoardUpdate(BoardVO boardVO) throws Exception {
+		challengeDAO.PcountBoardUpdate(boardVO);
+		
+	}
 	
 	
 

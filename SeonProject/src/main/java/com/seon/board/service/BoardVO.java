@@ -28,7 +28,7 @@ public class BoardVO {
 	private String plantType;
 	private String endDate;
 	
-	//private String pCount;
+	private int pCount;
 	
 	//페이징
 	private int viewPage = 1;

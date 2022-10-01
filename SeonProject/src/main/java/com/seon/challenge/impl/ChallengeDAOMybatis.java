@@ -28,4 +28,16 @@ public class ChallengeDAOMybatis extends EgovAbstractMapper implements Challenge
 		return result;
 	}
 
+	@Override
+	public int numBoard(ChallengeVO challengeVO) throws Exception {
+		int result=selectOne("numBoard",challengeVO);
+		return result;
+	}
+
+	@Override
+	public void PcountBoardUpdate(BoardVO boardVO) throws Exception {
+		insert("PcountBoardUpdate",boardVO);
+		
+	}
+
 }
