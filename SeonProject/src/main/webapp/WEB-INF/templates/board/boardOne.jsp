@@ -52,54 +52,60 @@
 <link href="css/style.css" rel="stylesheet">
 <style>
 html, body {
-    height: 100%
+	height: 100%
 }
 
 #wrap {
-    min-height: 100%;
-    position: relative;
-    padding-bottom: 60px;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 60px;
 }
 
 footer {
-    position: relative; (absolute -> relative)
-    transform: translatY(-100%);
+	position: relative;
+	(
+	absolute
+	->
+	relative)
+	transform
+	:
+	translatY(
+	-100%
+	);
 }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function deleteBoard(){
+	function deleteBoard() {
 		//alert("삭제시작")
-		var boardNoB=$('#boardNo').val()
+		var boardNoB = $('#boardNo').val()
 		alert(boardNoB)
 		$.ajax({
-			url:'deleteBoard.do',
-			type:'GET',
-			data:{
-				boardNo:boardNoB
+			url : 'deleteBoard.do',
+			type : 'GET',
+			data : {
+				boardNo : boardNoB
 			},
-			datatype:'JSON',
-			success:function(data){
+			datatype : 'JSON',
+			success : function(data) {
 				alert("글이 삭제 되었습니다.")
-				location.href='boardlist.do'
+				location.href = 'boardlist.do'
 			}
 		})
 	}
-	
-	function updateBoard(){
+
+	function updateBoard() {
 		alert("수정시작")
-		var boardNo=$('#boardNo').val()
-		location.href='boardUp.do?boardNo='+boardNo
+		var boardNo = $('#boardNo').val()
+		location.href = 'boardUp.do?boardNo=' + boardNo
 	}
-	
-	
-	function infoChallenge(){
+
+	function infoChallenge() {
 		alert("도전시작")
-		var boardNo=$('#boardNo').val()
-		location.href='infoChallenge.do?boardNo='+boardNo
+		var boardNo = $('#boardNo').val()
+		location.href = 'infoChallenge.do?boardNo=' + boardNo
 	}
-	
 </script>
 </head>
 
@@ -108,12 +114,12 @@ footer {
 	<jsp:include page="../header.jsp"></jsp:include>
 
 	<div id="wrap">
-	
 
 
 
-	<!-- 게시글 조회 -->
-	<!-- 부트 카드  
+
+		<!-- 게시글 조회 -->
+		<!-- 부트 카드  
 	<input id="boardNo" name="boardNo" value="${board.boardNo}" type="hidden" />
 	
 	<div class="container-xxl py-5">
@@ -140,9 +146,9 @@ footer {
 							<h6 class="card-subtitle text-muted">
 								<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" /> ~ ${endDate}  // 옆에 진행중 이런 뱃지 넣을 예정</h6><br/>
 								
-						</div>	--> 
-						
-						<!--  
+						</div>	-->
+
+		<!--  
 						<svg xmlns="http://www.w3.org/2000/svg"
 							class="d-block user-select-none" width="100%" height="200"
 							aria-label="Placeholder: Image cap" focusable="false" role="img"
@@ -151,8 +157,8 @@ footer {
 						    <rect width="100%" height="100%" fill="#868e96"></rect>
 						    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
 						  </svg>-->
-						  
-						  <!--  
+
+		<!--  
 						<div class="card-body">
 							<h5 class="card-text">${board.content}</h5>
 							<c:set var="image" value="${board.boardPicturePath }"/>     
@@ -195,7 +201,7 @@ footer {
 	</div>
 	-->
 
-					<!-- 얘 댓글로 쓰면 괜찮을 것 같음. 
+		<!-- 얘 댓글로 쓰면 괜찮을 것 같음. 
 					<div class="card">
 						<div class="card-body">
 							<h4 class="card-title">Card title</h4>
@@ -207,101 +213,120 @@ footer {
 						</div>
 					</div>
 					-->
-					
 
 
 
 
-	<!-- 테이블 예	-->
-    <div class="container-xxl py-5">
-     <div class="container">
-     <input id="boardNo" name="boardNo" value="${board.boardNo}" type="hidden" />
-     <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
-                <h1 class="display-5 mb-5">챌린저스</h1>
-     </div>
-     
-     
-	        <div class="row g-5 align-items-end">
-	          <div class="col-lg-12 col-md-7 wow fadeInUp" >
-				<p class="text-primary mb-4">${board.boardNo}번글</p>
-				
-			    <table class="table table-hover">
-				  <tbody>
-	
-				    <tr>
-				     <th scope="row" style="width: 100px">제목</th>
-				     <td>${board.title}</td>
-				     
-				    </tr>
-				    <tr>
-				      <th scope="row" style="width: 100px">분류</th>
-				      <td>${board.plantType}</td>
-				    </tr>
-				    <tr>
-				      <th scope="row" style="width: 100px">작성자</th>
-				      <td> ${board.memberNickname} </td>
-				    </tr>
-				    <tr>
-				      <th scope="row" style="width: 100px">기간</th>
-				      <td><c:set var="num" value="${board.endDate }" />
-							<c:set var="endDate" value="${fn:substring(num, 0, 10)}" />
-							<p class="card-subtitle text-muted">
-								<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" /> ~ ${endDate}  // 옆에 진행중 이런 뱃지 넣을 예정</p></td>
-				    </tr>
-				    <tr>
-				      <th scope="row" style="width: 100px">내용</th>
-				      <td width=300 height=350> ${board.content}
-				      <c:set var="image" value="${board.boardPicturePath }"/>     
-			         		<c:if test="${fn:contains(image, '.')}">
-				         		<div style="display:flex; justify-content:left; align-items:left;">         	
-				        			<img src ="img/upload/${board.boardPicturePath}" width="300px", height="300px">
-				       			</div>
-			       			</c:if>
-			       		</td>
-				    </tr>
-				    
-				  </tbody>
-				</table>
-				
-				
-				<c:if test="${memberId!=null }">
-					<div align="right">
-						<input type="button" class="btn btn-primary py-3 px-4" onclick="infoChallenge()" value="신청하기">
-					</div><br/>
-				</c:if>
-					
-					<c:if test="${board.memberId==memberId}">
-					<div align="right">
-						<input type="button" class="btn btn-primary py-3 px-4" onclick="deleteBoard()" value="삭제하기">
-						<input type="button" class="btn btn-primary py-3 px-4" onclick="updateBoard()" value="수정하기">
+
+		<!-- 테이블 예	-->
+		<div class="container-xxl py-5">
+			<div class="container">
+				<input id="boardNo" name="boardNo" value="${board.boardNo}"
+					type="hidden" />
+				<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
+					style="max-width: 500px;">
+					<p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
+					<h1 class="display-5 mb-5">챌린저스</h1>
+				</div>
+
+
+				<div class="row g-5 align-items-end">
+					<div class="col-lg-12 col-md-7 wow fadeInUp">
+						<!-- <p class="text-primary mb-4">${board.boardNo}번글</p> -->
+
+						<table class="table table-hover">
+							<tbody>
+
+								<tr>
+									<th scope="row" style="width: 100px">제목</th>
+									<td>${board.title}</td>
+
+								</tr>
+								<tr>
+									<th scope="row" style="width: 100px">분류</th>
+									<td>${board.plantType}</td>
+								</tr>
+								<tr>
+									<th scope="row" style="width: 100px">작성자</th>
+									<td>${board.memberNickname}</td>
+								</tr>
+								<tr>
+									<th scope="row" style="width: 100px">기간</th>
+									<td><c:set var="num" value="${board.endDate }" /> <c:set
+											var="endDate" value="${fn:substring(num, 0, 10)}" />
+										<p class="card-subtitle text-muted">
+											<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
+											~ ${endDate} 
+										
+									<c:if test="${endDate>=now}">
+										<span class="badge rounded-pill bg-success">신청중</span>
+									</c:if>
+									<c:if test="${endDate<=now}">
+										<span class="badge rounded-pill bg-danger">종료</span>
+									</c:if>
+									
+									</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" style="width: 100px">내용</th>
+									<td width=300 height=350>${board.content} <c:set
+											var="image" value="${board.boardPicturePath }" /> <c:if
+											test="${fn:contains(image, '.')}">
+											<div
+												style="display: flex; justify-content: left; align-items: left;">
+												<img src="img/upload/${board.boardPicturePath}"
+													width="300px" , height="300px">
+											</div>
+										</c:if>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+
+						<c:if test="${memberId!=null }">
+							<div align="right">
+								<input type="button" class="btn btn-primary py-3 px-4"
+									onclick="infoChallenge()" value="신청하기">
+							</div>
+							<br />
+						</c:if>
+
+						<c:if test="${board.memberId==memberId}">
+							<div align="right">
+								<input type="button" class="btn btn-primary py-3 px-4"
+									onclick="deleteBoard()" value="삭제하기"> <input
+									type="button" class="btn btn-primary py-3 px-4"
+									onclick="updateBoard()" value="수정하기">
+							</div>
+						</c:if>
+
 					</div>
-					</c:if>
-				
+				</div>
 			</div>
-   		 </div>
-    	</div>
-    </div>
-    </div>
+		</div>
+	</div>
 
 
 
 
 	<!-- Copyright Start -->
 	<footer>
-	<div class="container-fluid copyright py-4">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-					&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
-				</div>
-				<div class="col-md-6 text-center text-md-end">
-					<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-					함께하는 즐거움!
+		<div class="container-fluid copyright py-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+						&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+					</div>
+					<div class="col-md-6 text-center text-md-end">
+						<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+						함께하는 즐거움!
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</footer>
 	<!-- Copyright End -->
 

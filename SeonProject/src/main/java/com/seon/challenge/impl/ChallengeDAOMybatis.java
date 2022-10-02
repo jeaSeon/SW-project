@@ -1,5 +1,7 @@
 package com.seon.challenge.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.seon.board.service.BoardVO;
@@ -39,5 +41,12 @@ public class ChallengeDAOMybatis extends EgovAbstractMapper implements Challenge
 		insert("PcountBoardUpdate",boardVO);
 		
 	}
+
+	@Override
+	public List<BoardVO> selectChallenge(String string) throws Exception {
+		return selectList("selectChallenge", string);
+	}
+
+
 
 }

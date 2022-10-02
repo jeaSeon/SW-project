@@ -103,7 +103,7 @@ footer {
 
 					<div class="row g-5 align-items-end">
 						<div class="col-lg-12 col-md-7 wow fadeInUp">
-							<p class="text-primary mb-4">${board.boardNo}번글</p>
+							<!-- <p class="text-primary mb-4">${board.boardNo}번글</p> -->
 
 							<table class="table table-hover">
 								<tbody>
@@ -141,8 +141,17 @@ footer {
 												var="endDate" value="${fn:substring(num, 0, 10)}" />
 											<p class="card-subtitle text-muted">
 												<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
-												~ ${endDate} // 옆에 진행중 이런 뱃지 넣을 예정
-											</p></td>
+												~ ${endDate}  
+										
+									<c:if test="${endDate>=now}">
+										<span class="badge rounded-pill bg-success">신청중</span>
+									</c:if>
+									<c:if test="${endDate<=now}">
+										<span class="badge rounded-pill bg-danger">종료</span>
+									</c:if>
+									
+									</p>
+									</td>
 									</tr>
 
 									<tr>

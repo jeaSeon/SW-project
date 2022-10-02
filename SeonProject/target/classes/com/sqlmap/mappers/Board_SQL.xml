@@ -48,4 +48,8 @@
 	</update>
 	
 	
+	<select id="totalBoard" resultType="int">
+		SELECT COUNT(*) from board WHERE boardType="Challenge"
+	</select>
+	
 </mapper>

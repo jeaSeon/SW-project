@@ -13,6 +13,14 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
+<!-- 부트스와치...  -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+
+
+
 <!-- Favicon -->
 <link href="img/favicon.ico" rel="icon">
 
@@ -42,129 +50,104 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-
 <style>
 html, body {
-	height: 100%
+    height: 100%
 }
 
 #wrap {
-	min-height: 100%;
-	position: relative;
-	padding-bottom: 60px;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
 }
 
 footer {
-	position: relative;
-	(
-	absolute
-	->
-	relative)
-	transform
-	:
-	translatY(
-	-100%
-	);
+    position: relative; (absolute -> relative)
+    transform: translatY(-100%);
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	
+	function insertChallenge() {
+		alert("신청하기")
+		var boardNo = $('#boardNo').val()
+		location.href = 'insertChallenge.do?boardNo=' + boardNo
+
+	}
 </script>
 </head>
 
 
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+
 	<div id="wrap">
 
-		<!-- 바디라인 -->
-		<!-- Service Start -->
+		<!-- 테이블 예	-->
 		<div class="container-xxl py-5">
 			<div class="container">
+				<input id="boardNo" name="boardNo" value="${board.boardNo}"
+					type="hidden" />
 				<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
 					style="max-width: 500px;">
 					<p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
 					<h1 class="display-5 mb-5">챌린저스</h1>
 				</div>
-				<c:if test="${memberId!=null}">
-					<div align="right">
-						<a class="btn btn-primary py-3 px-4" href="boardWrite.do">등록</a>
+
+
+				<div class="row g-5 align-items-end">
+					<div class="col-lg-12 col-md-7 wow fadeInUp">
+
+						<table class="table table-hover">
+							<tbody>
+
+								<tr>
+									<th scope="row" style="width: 50px">글번호</th>
+									<th scope="row" style="width: 150px">제목</th>
+									<th scope="row" style="width: 50px">분류</th>
+									<th scope="row" style="width: 100px">종료날짜</th>									
+								</tr>
+								
+								<c:forEach var="challengeList" items="${selectChallengeList}">
+								<tr>
+									<td>${challengeList.boardNo}</td>
+									<td><a href="boardOne.do?boardNo=${challengeList.boardNo}">${challengeList.title}</a></td>
+									<td>${challengeList.plantType}</td>
+									<td>${challengeList.endDate}</td>
+								</tr>
+								<!-- 
+								<tr>
+									<th scope="row" style="width: 100px">작성자</th>
+									<td>${board.memberNickname}</td>
+								</tr>
+								 -->
+								</c:forEach>
+							</tbody>
+						</table>
+
 					</div>
-				</c:if>
-				<br>
-
-				<div class="row g-4">
-
-					<!-- 게시글 -->
-					<c:forEach var="board" items="${boardList}">
-						<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-							<div class="service-item rounded h-100">
-
-								<div class="service-text rounded p-5">
-									<div class="btn-square rounded-circle mx-auto mb-3">
-										<img class="img-fluid" src="img/icon/icon-3.png" alt="Icon">
-									</div>
-									<h4 class="mb-3">${board.plantType}</h4>
-									<p class="mb-4">${board.title}</p>
-									<p>작성자 : ${board.memberNickname}</p>
-									<!-- <p>총 참가자수 : ${board.PCount}명</p> -->
-									<span class="badge rounded-pill bg-warning">${board.PCount}명
-										신청</span>
-
-									<!-- 끝나는 날짜 substring으로 문자열나누기 -->
-									<c:set var="num" value="${board.endDate}" />
-									<c:set var="endDate" value="${fn:substring(num, 0, 10)}" />
-									<p class="mb-4">
-										<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
-										~ ${endDate}
-										
-										<c:if test="${endDate>=now}">
-											<span class="badge rounded-pill bg-success">신청중</span>
-										</c:if>
-										<c:if test="${endDate<=now}">
-											<span class="badge rounded-pill bg-danger">종료</span>
-										</c:if>
-									</p>
-									<a class="btn btn-sm"
-										href="boardOne.do?boardNo=${board.boardNo}"><i
-										class="fa fa-plus text-primary me-2"></i>신청하기</a>
-
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-
-
 				</div>
-
-
-
 			</div>
-			<!-- Service End -->
 		</div>
 	</div>
 
 
 
-
-
-
 	<!-- Copyright Start -->
 	<footer>
-		<div class="container-fluid copyright py-4">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-						&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
-					</div>
-					<div class="col-md-6 text-center text-md-end">
-						<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						함께하는 즐거움!
-					</div>
+	<div class="container-fluid copyright py-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+					&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+				</div>
+				<div class="col-md-6 text-center text-md-end">
+					<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+					함께하는 즐거움!
 				</div>
 			</div>
 		</div>
+	</div>
 	</footer>
 	<!-- Copyright End -->
 

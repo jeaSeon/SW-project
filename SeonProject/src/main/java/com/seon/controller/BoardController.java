@@ -2,6 +2,8 @@ package com.seon.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -31,17 +33,20 @@ public class BoardController {
 	//글 전체 조회
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
 	public String board(BoardVO boardVO, HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		
+		System.out.println("boardVO나와줘"+boardVO.toString());
+		
 		String memberId=null;
 		session=request.getSession();
 		memberId=(String) session.getAttribute("SessionMemberId");
 		//System.out.println("전체글 " + boardService.selectBoardList(boardVO));
 		
+		LocalDate now=LocalDate.now();
+		System.out.println("현재"+now);
+		
 		model.addAttribute("memberId",memberId);
 		model.addAttribute("boardList",boardService.selectBoardList(boardVO));
-		for (BoardVO test :boardService.selectBoardList(boardVO) ) {
-			System.out.println("나와봐라"+test.getPCount());
-			
-		}
+		model.addAttribute("now",now);
 		
 		
 		System.out.println(boardService.selectBoardList(boardVO));
@@ -56,6 +61,7 @@ public class BoardController {
 		String memberId=null;
 		session=request.getSession();
 		memberId=(String) session.getAttribute("SessionMemberId");
+		LocalDate now=LocalDate.now();
 		
 		//BoardVO board=boardService.selectBoard(boardVO);
 		//board.setContent(board.getContent().replace("<br>", "\r\n"));
@@ -63,6 +69,7 @@ public class BoardController {
 		
 		model.addAttribute("memberId",memberId);
 		model.addAttribute("board",boardService.selectBoard(boardVO));
+		model.addAttribute("now",now);
 		return "/board/boardOne";
 	}
 	

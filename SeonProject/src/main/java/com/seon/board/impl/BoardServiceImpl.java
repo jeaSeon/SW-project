@@ -44,6 +44,12 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.updateBoard(boardVO);
 		
 	}
+
+	@Override
+	public int totalBoard(BoardVO boardVO) throws Exception {
+		int result=boardDAO.totalBoard(boardVO);
+		return result;
+	}
 	
 	
 

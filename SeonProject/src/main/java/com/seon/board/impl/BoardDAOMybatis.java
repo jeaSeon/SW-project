@@ -44,6 +44,12 @@ public class BoardDAOMybatis extends EgovAbstractMapper implements BoardDAO{
 		
 	}
 
+	@Override
+	public int totalBoard(BoardVO boardVO) throws Exception {
+		int result=selectOne("totalBoard",boardVO);
+		return result;
+	}
+
 
 	
 	

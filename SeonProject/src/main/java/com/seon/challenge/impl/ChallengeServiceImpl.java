@@ -1,5 +1,7 @@
 package com.seon.challenge.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -42,6 +44,11 @@ public class ChallengeServiceImpl implements ChallengeService{
 	public void PcountBoardUpdate(BoardVO boardVO) throws Exception {
 		challengeDAO.PcountBoardUpdate(boardVO);
 		
+	}
+
+	@Override
+	public List<BoardVO> selectChallenge(String string) throws Exception {
+		return challengeDAO.selectChallenge(string);
 	}
 	
 	

@@ -110,7 +110,7 @@
                         <div class="nav-item dropdown">
 		                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
 		                    <div class="dropdown-menu bg-light m-0">
-		                        <a href="#" class="dropdown-item">참가내역조회</a>
+		                        <a href="selectChallenge.do" class="dropdown-item">참가내역조회</a>
 		                        <a href="#" class="dropdown-item">개인정보 조회</a>
 		                    </div>
 		                </div>

@@ -1,5 +1,8 @@
 package com.seon.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -35,10 +38,12 @@ public class ChallengeController {
 		int result=challengeService.countBoard(challengeVO);
 		
 		System.out.println("몇개니 너?"+ result);
+		LocalDate now=LocalDate.now();
 		
 		if(result == 0) {
 			model.addAttribute("board",challengeService.selectBoard(boardVO));
 			model.addAttribute("sessionMember",sessionMember);
+			model.addAttribute("now",now);
 			
 			return "/challenge/infoChallenge";
 			
@@ -102,4 +107,22 @@ public class ChallengeController {
 		return "/challenge/challengeSuccess";
 	}
 	
+	
+	//내가 신청한 챌린지 확인
+	@RequestMapping(value="selectChallenge.do")
+	public String selectChallenge(MembersVO membersVO, BoardVO boardVO, ChallengeVO challengeVO,
+			HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		MembersVO sessionMember=null;
+		session=request.getSession();
+		sessionMember = (MembersVO) session.getAttribute("SessionMember");
+		
+		List<BoardVO> selectChallengeList=challengeService.selectChallenge(sessionMember.getMemberId());
+		
+		System.out.println("신청내역 내와봐"+selectChallengeList);
+		model.addAttribute("sessionMember",sessionMember);
+		model.addAttribute("selectChallengeList",selectChallengeList);
+		
+		
+		return "/challenge/selectChallenge";
+	}
 }

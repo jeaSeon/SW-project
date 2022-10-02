@@ -18,4 +18,7 @@ public interface BoardService {
 	
 	//글 수정
 	void updateBoard(BoardVO boardVO) throws Exception;
+	
+	//전체 글 갯수
+	public int totalBoard(BoardVO boardVO) throws Exception;
 }

@@ -44,4 +44,12 @@
 		UPDATE board SET pCount=#{pCount} WHERE boardNO=#{boardNo}
 	</update>
 
+
+	<select id="selectChallenge" resultMap="boardsResult">
+		SELECT *
+		FROM board b INNER JOIN challenge c
+		ON b.boardNo = c.boardNo
+		WHERE c.memberId=#{memberId}
+		ORDER BY c.cwdate desc
+	</select>
 </mapper>
