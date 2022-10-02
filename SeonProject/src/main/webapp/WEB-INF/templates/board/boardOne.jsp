@@ -50,6 +50,22 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+<style>
+html, body {
+    height: 100%
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+footer {
+    position: relative; (absolute -> relative)
+    transform: translatY(-100%);
+}
+</style>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -91,24 +107,8 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 
-	<!-- Page Header Start -->
-	<div class="container-fluid page-header py-5 mb-5 wow fadeIn"
-		data-wow-delay="0.1s">
-		<div class="container text-center py-5">
-			<h1 class="display-3 text-white mb-4 animated slideInDown">Green
-				House</h1>
-			<nav aria-label="breadcrumb animated slideInDown">
-				<ol class="breadcrumb justify-content-center mb-0">
-					<!-- 
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
-					<li class="breadcrumb-item active" aria-current="page">그린하우스에서
-						함께하는 즐거움을 느껴보세요.</li>
-				</ol>
-			</nav>
-		</div>
-	</div>
-	<!-- Page Header End -->
+	<div id="wrap">
+	
 
 
 
@@ -230,28 +230,28 @@
 				  <tbody>
 	
 				    <tr>
-				     <th scope="row">제목</th>
+				     <th scope="row" style="width: 100px">제목</th>
 				     <td>${board.title}</td>
 				     
 				    </tr>
 				    <tr>
-				      <th scope="row">분류</th>
+				      <th scope="row" style="width: 100px">분류</th>
 				      <td>${board.plantType}</td>
 				    </tr>
 				    <tr>
-				      <th scope="row">작성자</th>
+				      <th scope="row" style="width: 100px">작성자</th>
 				      <td> ${board.memberNickname} </td>
 				    </tr>
 				    <tr>
-				      <th scope="row">기간</th>
+				      <th scope="row" style="width: 100px">기간</th>
 				      <td><c:set var="num" value="${board.endDate }" />
 							<c:set var="endDate" value="${fn:substring(num, 0, 10)}" />
 							<p class="card-subtitle text-muted">
 								<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" /> ~ ${endDate}  // 옆에 진행중 이런 뱃지 넣을 예정</p></td>
 				    </tr>
 				    <tr>
-				      <th scope="row">내용</th>
-				      <td> ${board.content}
+				      <th scope="row" style="width: 100px">내용</th>
+				      <td width=300 height=350> ${board.content}
 				      <c:set var="image" value="${board.boardPicturePath }"/>     
 			         		<c:if test="${fn:contains(image, '.')}">
 				         		<div style="display:flex; justify-content:left; align-items:left;">         	
@@ -282,11 +282,13 @@
    		 </div>
     	</div>
     </div>
+    </div>
 
 
 
 
 	<!-- Copyright Start -->
+	<footer>
 	<div class="container-fluid copyright py-4">
 		<div class="container">
 			<div class="row">
@@ -300,6 +302,7 @@
 			</div>
 		</div>
 	</div>
+	</footer>
 	<!-- Copyright End -->
 
 

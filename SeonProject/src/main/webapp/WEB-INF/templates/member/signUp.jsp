@@ -33,7 +33,22 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
+<style>
+html, body {
+    height: 100%
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+footer {
+    position: relative; (absolute -> relative)
+    transform: translatY(-100%);
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 function memberId_check() {
@@ -131,23 +146,10 @@ function signUpMember() {
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
-	 <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Green House</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                <!-- 
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
-                    <li class="breadcrumb-item active" aria-current="page">그린하우스에서 함께하는 즐거움을 느껴보세요.</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
+	
     
-    
+
+     <div id="wrap">
         <!-- Quote Start 
         data-image-src="img/carousel-2.jpg"-->
     <!--    <div class="container-fluid quote my-5 py-5" data-parallax="scroll" >-->
@@ -201,9 +203,11 @@ function signUpMember() {
  	</div>
               <!-- </div>
  		Quote End -->
+ 	</div>
     
 
     <!-- Copyright Start -->
+    <footer>
     <div class="container-fluid copyright py-4">
         <div class="container">
             <div class="row">
@@ -217,6 +221,7 @@ function signUpMember() {
             </div>
         </div>
     </div>
+    </footer>
     <!-- Copyright End -->
 
 

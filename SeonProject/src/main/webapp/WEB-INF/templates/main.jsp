@@ -33,26 +33,169 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+<style>
+html, body {
+    height: 100%
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+footer {
+    position: relative; (absolute -> relative)
+    transform: translatY(-100%);
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var arr = [];
+    var today = new Date();
+    var week = new Array('일', '월', '화', '수', '목', '금', '토');
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+    var hours_al = new Array('02', '05', '08', '11', '14', '17', '20', '23');
+    var korea = [ {'region' : '서울','nx' : 60,'ny' : 127}, 
+        {'region' : '인천','nx' : 55,'ny' : 124}, 
+        {'region' : '경기도','nx' : 60,'ny' : 121}, 
+        {'region' : '강원도','nx' : 92,'ny' : 131}, 
+        {'region' : '충청북도','nx' : 69,'ny' : 106}, 
+        {'region' : '충청남도','nx' : 68,'ny' : 100},
+        {'region' : '전라북도','nx' : 63,'ny' : 89}, 
+        {'region' : '전라남도','nx' : 50,'ny' : 67}, 
+        {'region' : '경상남도','nx' : 90,'ny' : 77}, 
+        {'region' : '경상북도','nx' : 91,'ny' : 106}, 
+        {'region' : '제주도','nx' : 52,'ny' : 38} ];
+
+    /* $('.weather-date').html(
+            month + "월 " + day + "일 "
+                    + week[today.getDay()] + "요일"); */
+
+    /* 동네예보 시간이 0200 0500 ... 3시간 단위로 23시까지 */
+    for (var i = 0; i < hours_al.length; i++) {
+        var h = hours_al[i] - hours;
+        if (h == -1 || h == 0 || h == -2) {
+            var now = hours_al[i];
+        }
+        if (hours == 00) {
+            var now = hours_al[7];
+        }
+    }
+
+    /* example
+     * 9시 -> 09시 변경 필요
+     */
+    if (hours < 10) {
+        hours = '0' + hours;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    today = year + "" + month + "" + day;
+
+    /* 좌표 */
+    $.each(korea,function(j, k) {
+                        var _nx = korea[j].nx, _ny = korea[j].ny, region = korea[j].region, 
+                        apikey = "g5MqBFx6c8GYYucXuwkR1wmpH1JW3%2FKYd0oq3FxnraDfU4KasJ2zv%2Bm5F7TMKooDnE8PQFPiAG8GBgMWxySoyw%3D%3D", 
+                        ForecastGribURL = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData";
+                        ForecastGribURL += "?ServiceKey=" + apikey;
+                        ForecastGribURL += "&base_date=" + today;
+                        ForecastGribURL += "&base_time=" + now + "00";
+                        ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
+                        arr.push({'url' : ForecastGribURL, 'region' : region});
+
+                        $.ajax({
+                                    url : arr[j].url,
+                                    type : 'GET',
+                                    success : function(data) {
+                                        var $data = $(data).find("response>body>items>item");
+                                        var cate = '';
+                                        var temp = '';
+                                        var sky = '';
+                                        var rain = '';
+
+                                        $.each($data,function(i,o) {
+                                                            cate = $(o).find("category").text(); // 카테고리 목록    
+
+                                                            if (cate == 'T3H') {
+                                                                temp = $(this).find("fcstValue").text(); // 3시간 온도
+                                                            }
+                                                            if (cate == 'SKY') {
+                                                                sky = $(this).find("fcstValue").text(); // 하늘상태
+                                                            }
+                                                            if (cate == 'PTY') {
+                                                                rain = $(this).find("fcstValue").text(); // 강수형태
+                                                            }
+                                                        });
+
+                                        $('.weather').append('<li class="list-group-item weather_li'+j+'"></li>');
+                                        $('.weather_li' + j).addClass('in' + j);
+                                        $('.in' + j).html(temp + " ℃"); //온도 
+                                        $('.in' + j).prepend(arr[j].region + '&emsp;'); // 지역이름
+
+                                        if (rain != 0) {
+                                            switch (rain) {
+                                            case '1':
+                                                $('.in' + j).append(" / 비");
+                                                $('.in' + j).prepend('<i class="fas fa-cloud-showers-heavy"></i>&emsp;');
+                                                break;
+                                            case '2':
+                                                $('.in' + j).append(" / 비/눈");
+                                                $('.in' + j).prepend('<i class="fas fa-cloud-rain"></i>&emsp;');
+                                                break;
+                                            case '3':
+                                                $('.in' + j).append(" / 눈");
+                                                $('.in' + j).prepend('<i class="fas fa-snowflake"></i>&emsp;');
+                                                break;
+                                            }
+                                        } else {
+                                            switch (sky) {
+                                            case '1':
+                                                $('.in' + j).append(" / 맑음");
+                                                $('.in' + j).prepend('<i class="fas fa-sun"></i>&emsp;');
+                                                break;
+                                            case '2':
+                                                $('.in' + j).append(" / 구름조금");
+                                                $('.in' + j).prepend('<i class="fas fa-cloud-sun"></i>&emsp;');
+                                                break;
+                                            case '3':
+                                                $('.in' + j).append(" / 구름많음");
+                                                $('.in' + j).prepend('<i class="fas fa-cloud"></i>&emsp;');
+                                                break;
+                                            case '4':
+                                                $('.in' + j).append(" / 흐림");
+                                                $('.in' + j).prepend( '<i class="fas fa-smog"></i>&emsp;');
+                                                break;
+                                            }
+                                        }//if 종료
+                                    }//success func 종료
+                                });
+                    });
+});
+
+
+    
+</script> 
+    
+    
 </head>
 
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 
-	 <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Green House</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                <!-- 
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
-                    <li class="breadcrumb-item active" aria-current="page">그린하우스에서 함께하는 즐거움을 느껴보세요.</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
+<div id="wrap">
 
 
     <!-- Projects Start -->
@@ -66,6 +209,15 @@
             <div>
           	<p class="fs-5 fw-bold text-primary">여기에 날씨 공공데이터 넣을 예정.</p>  
             </div>
+            
+            <div class="vis-weather">
+                <h1>전국 날씨</h1>
+                <ul class="list-group list-group-flush weather"
+                    style="font-weight: 600;">
+                    <!-- <li class="list-group-item weather"></li> -->
+                </ul>
+</div>
+            
             
             <br/><br/>
             <div class="row wow fadeInUp" data-wow-delay="0.3s">
@@ -155,6 +307,7 @@
         </div>
     </div>
     <br/><br/><br/>
+    </div>
     <!-- Projects End -->
 
 
@@ -206,6 +359,7 @@
 
 
     <!-- Copyright Start -->
+    <footer> 
     <div class="container-fluid copyright py-4">
         <div class="container">
             <div class="row">
@@ -219,6 +373,7 @@
             </div>
         </div>
     </div>
+    </footer>
     <!-- Copyright End -->
 
 
