@@ -68,10 +68,11 @@ footer {
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function insertChallenge() {
-		alert("신청하기")
-		var boardNo = $('#boardNo').val()
-		location.href = 'insertChallenge.do?boardNo=' + boardNo
+	function delChallenge(a) {
+		//alert("취소시작")
+		var boardNo=a;
+		//alert(boardNo)
+		location.href = 'delChallenge.do?boardNo=' + boardNo
 
 	}
 </script>
@@ -105,7 +106,7 @@ footer {
 									<th scope="row" style="width: 50px">글번호</th>
 									<th scope="row" style="width: 150px">제목</th>
 									<th scope="row" style="width: 50px">분류</th>
-									<th scope="row" style="width: 100px">종료날짜</th>									
+									<th scope="row" style="width: 100px">종료날짜</th>	
 								</tr>
 								
 								<c:forEach var="challengeList" items="${selectChallengeList}">
@@ -113,7 +114,9 @@ footer {
 									<td>${challengeList.boardNo}</td>
 									<td><a href="boardOne.do?boardNo=${challengeList.boardNo}">${challengeList.title}</a></td>
 									<td>${challengeList.plantType}</td>
-									<td>${challengeList.endDate}</td>
+									<td>${challengeList.endDate} &nbsp&nbsp&nbsp
+									
+									<input type="button" class="btn btn-outline-danger" onclick="delChallenge(${challengeList.boardNo})" value="취소하기"></button>
 								</tr>
 								<!-- 
 								<tr>
@@ -139,7 +142,7 @@ footer {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-					&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+					&copy; <a class="border-bottom" href="#">Green House</a>, 화분키우기의 재미를 함께 느껴보세요.
 				</div>
 				<div class="col-md-6 text-center text-md-end">
 					<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

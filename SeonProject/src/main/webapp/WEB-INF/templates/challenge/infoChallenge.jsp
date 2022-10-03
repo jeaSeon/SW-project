@@ -174,6 +174,31 @@ footer {
 							</c:if>
 
 						</div>
+						
+					<div class="col-lg-12 col-md-7 wow fadeInUp">
+                    <div class="row g-5">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <!-- <i class="fa fa-award fa-3x text-primary mb-3"></i> -->
+                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">자연이 주는 위로, 반려식물의 장점</h4>
+                                <span>누구나 쉽게 기를 수 있습니다.<br/>
+						                              인테리어에 탁월한 효과가 있습니다.<br/>
+						                               쳐다만 봐도 힐링이 됩니다.<br/>
+						                               집 안의 화학물질과 오염물질을 흡수합니다.<br/>
+						                               피부를 정화해줍니다.<br/></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <h4 class="mb-3">식물키우기 관리 스케쥴</h4>
+                                <span>원예, 홈가드닝 전문가부터 반려식물 초보까지 <br/>
+						                                식물 인테리어를 사랑하는 가드너라면<br/>
+						                                함께 식물 키우기에 동참해보세요.<br/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 					</div>
 
 
@@ -191,90 +216,6 @@ footer {
 	</div>
 	</div>
 
-
-
-		<!-- 
-	<div class="container-xxl py-5">
-		<div class="container">
-			<input id="boardNo" name="boardNo" value="${board.boardNo}"
-				type="hidden" />
-			<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
-				style="max-width: 500px;">
-				<p class="fs-5 fw-bold text-primary">함께하는 즐거움!</p>
-				<h1 class="display-5 mb-5">챌린저스</h1>
-			</div>
-
-
-			<div class="row g-5 align-items-end">
-				<div class="col-lg-12 col-md-7 wow fadeInUp">
-					<p class="text-primary mb-4">${board.boardNo}번글</p>
-
-					<table class="table table-hover">
-						<tbody>
-
-							<tr>
-								<th scope="row">참가자 아이디</th>
-								<td>${sessionMember.memberId}</td>
-							</tr>
-
-							<tr>
-								<th scope="row">참가자 닉네임</th>
-								<td>${sessionMember.memberNickname}</td>
-							</tr>
-
-
-							<tr>
-								<th scope="row"></th>
-								<td></td>
-							</tr>
-
-
-							<tr>
-								<th scope="row">제목</th>
-								<td>${board.title}</td>
-
-							</tr>
-							<tr>
-								<th scope="row">분류</th>
-								<td>${board.plantType}</td>
-							</tr>
-
-							<tr>
-								<th scope="row">기간</th>
-								<td><c:set var="num" value="${board.endDate }" /> <c:set
-										var="endDate" value="${fn:substring(num, 0, 10)}" />
-									<p class="card-subtitle text-muted">
-										<fmt:formatDate value="${board.wdate}" pattern="yyyy-MM-dd" />
-										~ ${endDate} // 옆에 진행중 이런 뱃지 넣을 예정
-									</p></td>
-							</tr>
-
-							<tr>
-								<th scope="row"></th>
-								<td></td>
-							</tr>
-
-
-
-
-						</tbody>
-					</table>
-
-
-					<c:if test="${sessionMember!=null }">
-						<div align="right">
-							<input type="button" class="btn btn-primary py-3 px-4"
-								onclick="insertChallenge()" value="신청하기">
-						</div>
-						<br />
-					</c:if>
-
-
-				</div>
-			</div>
-		</div>
-	</div>
-		 -->
 
 
 	<!-- Copyright Start -->

@@ -67,8 +67,8 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="boardlist.do" class="nav-item nav-link">참여하기</a>
-                  <a href="#" class="nav-item nav-link">식물검색</a>
-                  <!--  <a href="about.html" class="nav-item nav-link">About</a>
+                  <!--<a href="#" class="nav-item nav-link">식물검색</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
                 <a href="project.html" class="nav-item nav-link active">Projects</a>
              
@@ -111,7 +111,7 @@
 		                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
 		                    <div class="dropdown-menu bg-light m-0">
 		                        <a href="selectChallenge.do" class="dropdown-item">참가내역조회</a>
-		                        <a href="#" class="dropdown-item">개인정보 조회</a>
+		                       <!--  <a href="#" class="dropdown-item">개인정보 조회</a> -->
 		                    </div>
 		                </div>
                                     

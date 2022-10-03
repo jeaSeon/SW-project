@@ -47,6 +47,12 @@ public class ChallengeDAOMybatis extends EgovAbstractMapper implements Challenge
 		return selectList("selectChallenge", string);
 	}
 
+	@Override
+	public void delChallenge(ChallengeVO challengeVO) throws Exception {
+		delete("delChallenge",challengeVO);
+		
+	}
+
 
 
 }

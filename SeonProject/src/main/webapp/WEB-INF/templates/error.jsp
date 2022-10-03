@@ -70,59 +70,54 @@ footer {
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function deleteBoard(){
-		//alert("삭제시작")
-		var boardNoB=$('#boardNo').val()
-		alert(boardNoB)
-		$.ajax({
-			url:'deleteBoard.do',
-			type:'GET',
-			data:{
-				boardNo:boardNoB
-			},
-			datatype:'JSON',
-			success:function(data){
-				alert("글이 삭제 되었습니다.")
-				location.href='boardlist.do'
-			}
-		})
-	}
-	
-	function updateBoard(){
-		alert("수정시작")
-		var boardNo=$('#boardNo').val()
-		location.href='boardUp.do?boardNo='+boardNo
-	}
-	
-	
-	function infoChallenge(){
-		alert("도전시작")
-		var boardNo=$('#boardNo').val()
-		location.href='infoChallenge.do?boardNo='+boardNo
-	}
-	
+
 </script>
 </head>
 
 
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<div id="wrap">
 
-		<!-- 에러 -->
+		<!-- 에러  -->
 		<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
 	        <div class="container text-center">
 	            <div class="row justify-content-center">
 	                <div class="col-lg-6">
 	                    <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-	                    <!-- <h1 class="display-1">중복</h1> -->
 	                    <h1 class="mb-4">이미 신청된 챌린지</h1>
 	                    <p class="mb-4">이미 신청된 챌린지로 다른 챌린지를 선택하여 주십시오.^^</p>
 	                    <a class="btn btn-primary py-3 px-4" href="boardlist.do">목록으로</a>
+	                    <br/><br/><br/><br/><br/><br/>
+	                    
+	                <div class="col-lg-12 col-md-7 wow fadeInUp">
+                    <div class="row g-5">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">자연이 주는 위로, 반려식물의 장점</h4>
+                                <span>누구나 쉽게 기를 수 있습니다.<br/>
+						                              인테리어에 탁월한 효과가 있습니다.<br/>
+						                               쳐다만 봐도 힐링이 됩니다.<br/>
+						                               집 안의 화학물질과 오염물질을 흡수합니다.<br/>
+						                               피부를 정화해줍니다.<br/></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <h4 class="mb-3">식물키우기 관리 스케쥴</h4>
+                                <span>원예, 홈가드닝 전문가부터 반려식물 초보까지 <br/>
+						                                식물 인테리어를 사랑하는 가드너라면<br/>
+						                                함께 식물 키우기에 동참해보세요.<br/></span>
+                            </div>
+                        </div>
+                        <br/><br/>
+                    </div>
+                </div>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
+	    
 	    </div>
 
 
@@ -134,7 +129,7 @@ footer {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-					&copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+					&copy; <a class="border-bottom" href="#">Green House</a>, 화분키우기의 재미를 함께 느껴보세요.
 				</div>
 				<div class="col-md-6 text-center text-md-end">
 					<!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

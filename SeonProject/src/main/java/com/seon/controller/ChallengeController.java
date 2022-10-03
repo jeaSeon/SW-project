@@ -22,6 +22,7 @@ public class ChallengeController {
 	@Resource(name="challengeService")
 	private ChallengeService challengeService;
 	
+	//상세페이지
 	@RequestMapping(value="infoChallenge.do")
 	public String infoChallenge( BoardVO boardVO, ChallengeVO challengeVO,
 			HttpSession session, HttpServletRequest request, Model model) throws Exception {
@@ -57,7 +58,7 @@ public class ChallengeController {
 	
 	
 	
-	
+		//등록 성공
 	@RequestMapping(value="insertChallenge.do")
 	public String insertChallenge(MembersVO membersVO, BoardVO boardVO, ChallengeVO challengeVO,
 			HttpSession session, HttpServletRequest request, Model model) throws Exception {
@@ -73,16 +74,20 @@ public class ChallengeController {
 		
 		challengeVO.setMemberId(sessionMember.getMemberId());
 		challengeService.insertChallenge(challengeVO);
-		System.out.println("인설트했다잉?"+challengeVO);
+		//System.out.println("인설트했다잉?"+challengeVO);
 		
+		//신청자 수 구하기
 		int a=challengeService.numBoard(challengeVO);
-		System.out.println("몇명 신청했어?"+a);
-		
+		//System.out.println("몇명 신청했어?"+a);
 		boardVO.setPCount(a);
 		System.out.println("보드정보 갖고와"+boardVO.toString());
 		challengeService.PcountBoardUpdate(boardVO);
 		
+		LocalDate now=LocalDate.now();
 		
+		model.addAttribute("board",challengeService.selectBoard(boardVO));
+		model.addAttribute("sessionMember",sessionMember);
+		model.addAttribute("now",now);
 		
 		model.addAttribute("challengeVO",challengeVO);
 		return "/challenge/challengeSuccess";
@@ -124,5 +129,27 @@ public class ChallengeController {
 		
 		
 		return "/challenge/selectChallenge";
+	}
+	
+	
+	//챌린지 삭제
+	@RequestMapping(value="delChallenge.do")
+	public String delChallenge(MembersVO membersVO, BoardVO boardVO, ChallengeVO challengeVO,
+			HttpSession session, HttpServletRequest request, Model model) throws Exception {
+		System.out.println("보드넘버 넘어왔냐"+challengeVO.toString());
+		
+		MembersVO sessionMember=null;
+		session=request.getSession();
+		sessionMember = (MembersVO) session.getAttribute("SessionMember");
+		
+		challengeService.delChallenge(challengeVO);
+		
+		int a=challengeService.numBoard(challengeVO);
+		System.out.println("몇명 신청했어?"+a);
+		
+		boardVO.setPCount(a);
+		challengeService.PcountBoardUpdate(boardVO);
+		
+		return "main";
 	}
 }

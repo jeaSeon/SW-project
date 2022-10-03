@@ -196,16 +196,67 @@ $(document).ready(function() {
 <jsp:include page="header.jsp"></jsp:include>
 
 <div id="wrap">
-
+	<div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-7 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <p class="fs-5 fw-bold text-primary">자연이 주는 위로, 반려식물</p>
+                    <h1 class="display-5 mb-4">그린하우스에서 <br/> 마음의 정화를 <br/> 느껴보세요</h1>
+                    <p class="mb-4">누구나 쉽게 기를 수 있고, <br/>
+							        쳐다만 봐도 힐링이 되는 <br/>
+							                   반려식물을 통해 마음을 정화해 보세요. <br/></p>
+                    <a class="btn btn-primary py-3 px-4" href="boardlist.do">참여하기</a>
+                </div>
+                
+       		 <!-- 
+                <div class="col-lg-6">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-6">
+                            <div class="row g-4">
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
+                                    <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                                            <i class="fa fa-check fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">정서안정</h4>
+                                    </div>
+                                </div>
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;">
+                                    <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                                            <i class="fa fa-check fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">보람감</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow fadeIn" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeIn;">
+                            <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                                    <i class="fa fa-check fa-3x text-primary"></i>
+                                </div>
+                                <h4 class="mb-0">행복함</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 -->
+            </div>
+        </div>
+    </div>
 
     <!-- Projects Start -->
     <div class="container-xxl py-5">
         <div class="container">
+        <!-- 
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-bold text-primary">식물을 함께 키워봐요</p>
                 <h1 class="display-5 mb-5">식물키우기</h1>
             </div>
-            <br/><br/>
+            <br/><br/> -->
+            
+            <!-- 
             <div>
           	<p class="fs-5 fw-bold text-primary">여기에 날씨 공공데이터 넣을 예정.</p>  
             </div>
@@ -214,9 +265,9 @@ $(document).ready(function() {
                 <h1>전국 날씨</h1>
                 <ul class="list-group list-group-flush weather"
                     style="font-weight: 600;">
-                    <!-- <li class="list-group-item weather"></li> -->
+                     <li class="list-group-item weather"></li> 
                 </ul>
-</div>
+			</div> -->
             
             
             <br/><br/>
@@ -233,11 +284,11 @@ $(document).ready(function() {
             <div class="row g-4 portfolio-container">
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        <img class="img-fluid" src="img/1.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 <!-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>  -->
                             </div>
                         </div>
@@ -245,11 +296,11 @@ $(document).ready(function() {
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        <img class="img-fluid" src="img/2.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 
                             </div>
                         </div>
@@ -257,11 +308,11 @@ $(document).ready(function() {
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-3.jpg" alt="">
+                        <img class="img-fluid" src="img/3.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                
                             </div>
                         </div>
@@ -269,11 +320,11 @@ $(document).ready(function() {
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-4.jpg" alt="">
+                        <img class="img-fluid" src="img/4.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 
                             </div>
                         </div>
@@ -281,11 +332,11 @@ $(document).ready(function() {
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-5.jpg" alt="">
+                        <img class="img-fluid" src="img/5.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 
                             </div>
                         </div>
@@ -293,11 +344,11 @@ $(document).ready(function() {
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
                     <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="img/service-6.jpg" alt="">
+                        <img class="img-fluid" src="img/6.jpg" alt="">
                         <div class="portfolio-text">
                             <h4 class="text-white mb-4"></h4>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-lg-square rounded-circle mx-2" href="img/6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                               
                             </div>
                         </div>
@@ -364,7 +415,7 @@ $(document).ready(function() {
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+                    &copy; <a class="border-bottom" href="#">Green House</a>, 화분키우기의 재미를 함께 느껴보세요.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

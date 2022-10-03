@@ -38,7 +38,7 @@
 <style type="text/css">
 
 #title{
-    width:820px;
+    width:900px;
 }
 
 html, body {
@@ -98,7 +98,7 @@ footer {
 	        <table class="table">
 	            <tr>
 	                <th style="padding:13px 0 0 15px;">제목</th>
-	                <td><input name="title" type="text" value="${board.title }"/></td>
+	                <td><input id="title" name="title" type="text" value="${board.title }"/></td>
 	            </tr>
 	            
 	           
@@ -113,15 +113,24 @@ footer {
 	                <th style="padding:13px 0 0 15px">분류</th>
 	                <td>
 	                        <select  id="plantType" name="plantType">
-	                            <option value="채소">채소</option>
-	                            <option value="다육이">다육이</option>
+	                            <option value="다육식물">다육식물</option>
+	                            <option value="관엽식물">관엽식물</option>
+	                            <option value="공기정화식물">공기정화식물</option>
+	                            <option value="넝쿨류">넝쿨류</option>
+	                            <option value="과실열매류">과실열매류</option>
+	                            <option value="수경식물">수경식물</option>
+	                            <option value="허브">허브</option>
+	                            <option value="씨앗/종자">씨앗/종자</option>
+	                            <option value="채소/과일">채소/과일</option>
+	                            
+	                            
 	                        </select>
 	                </td>
 	            </tr>
 	            
 	            <tr>
 	                <th style="padding:13px 0 0 15px;">내용</th>
-	                <td><textarea name="content" maxlength="140" rows="10" cols="100" style="height: 300px;">${board.content }</textarea>
+	                <td><textarea name="content" maxlength="500" rows="10" cols="100" style="height: 300px;">${board.content }</textarea>
 	                </td>
 	            </tr>
 	            
@@ -157,7 +166,7 @@ footer {
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Green House</a>, 문구문구.
+                    &copy; <a class="border-bottom" href="#">Green House</a>, 화분키우기의 재미를 함께 느껴보세요.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->

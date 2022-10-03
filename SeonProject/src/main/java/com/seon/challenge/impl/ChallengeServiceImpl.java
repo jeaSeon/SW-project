@@ -50,6 +50,12 @@ public class ChallengeServiceImpl implements ChallengeService{
 	public List<BoardVO> selectChallenge(String string) throws Exception {
 		return challengeDAO.selectChallenge(string);
 	}
+
+	@Override
+	public void delChallenge(ChallengeVO challengeVO) throws Exception {
+		challengeDAO.delChallenge(challengeVO);
+		
+	}
 	
 	
 

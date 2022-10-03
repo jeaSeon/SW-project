@@ -17,4 +17,6 @@ public interface ChallengeDAO {
 	void PcountBoardUpdate(BoardVO boardVO) throws Exception;
 	
 	List<BoardVO> selectChallenge(String string) throws Exception;
+	
+	void delChallenge(ChallengeVO challengeVO) throws Exception;
 }

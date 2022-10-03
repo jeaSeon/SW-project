@@ -52,4 +52,8 @@
 		WHERE c.memberId=#{memberId}
 		ORDER BY c.cwdate desc
 	</select>
+	
+	<delete id="delChallenge">
+		DELETE FROM challenge WHERE boardNo=#{boardNo}
+	</delete>
 </mapper>
